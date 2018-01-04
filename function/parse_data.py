@@ -17,7 +17,7 @@ import pickle
 #   input: none
 #   output: dictionary
 def parse_data():
-
+    print("Start load file")
     # Read File
     fread = open("../dataset/data_job_posts_only_doc.csv" ,"r")
     csvCursor = csv.reader(fread)
@@ -25,27 +25,31 @@ def parse_data():
     row_count = -1
     data_key = []
     data_dict = {}
+    all_data_dict = {}
     for row in csvCursor:
-        if row_count == -1:
-            for i in range(0,5):
-                # date
-                data_key[i] = row[i]
-            # title
+        # if row_count == -1:
+            # for i in range(0,5):
+            #     data_key[i] = row[i]
+            # # date
+            # data_key[0] = row[0]
+            # # title
             # data_key[1] = row[1]
-            # job description
+            # # job description
             # data_key[2] = row[2]
-            # job requirement
+            # # job requirement
             # data_key[3] = row[3]
-            # required quality
+            # # required quality
             # data_key[4] = row[4]
-        else:
+        # else:
+        if row_count != -1:
+            all_data_dict[row_count] = {}
             all_data_dict[row_count]["all"] = row[1]
             if row[2] != "NA":
-                all_data_dict[row_count]["all"] += row[2]
+                all_data_dict[row_count]["all"] += " " + row[2]
             if row[3] != "NA":
-                all_data_dict[row_count]["all"] += row[3]
+                all_data_dict[row_count]["all"] += " " + row[3]
             if row[4] != "NA":
-                all_data_dict[row_count]["all"] += row[4]
+                all_data_dict[row_count]["all"] += " " + row[4]
             # for j in range(0,5):
             #     data_dict[row_count][data_key[j]] = row[j]
         row_count += 1
@@ -54,8 +58,9 @@ def parse_data():
 
 # Record the document frequency of each term and save it as a txt file (dictionary.txt)
 def construct_dictionary(data_dict):
+    print("Start construct dictionary")
     term_array = []
-    for i in len(data_dict):
+    for i in range(0,len(data_dict)):
         term_array_set = set(collect_text(data_dict, i, "all"))
         term_array += term_array_set
     term_array.sort()
@@ -69,6 +74,8 @@ def collect_text(data_dict, post, column_title):
     # Get content
     # content = parse_data()
     content = data_dict[post][column_title]
+    content.replace("\n\n", " ")
+    content.replace("\n", " ")
 
     # Tokenization
     tokenizer = RegexpTokenizer(r'\w+')
@@ -102,6 +109,7 @@ def get_term_frequency_array(term_array):
 
 # Print out the txt file and the pkl file
 def print_out_df(sorted_term_frequency):
+    print("Start print out df")
 
     #txt file
     index_counter = 1
