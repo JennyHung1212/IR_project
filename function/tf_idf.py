@@ -53,28 +53,34 @@ def calculate_tf_idf(job_data):
 	tf_idf_list = []
 	for i in range(0, len(job_data)):
 		word_tf_idf = {}
+		print ("N: "+ str(len(job_data)))
 		for word, df in word_dict.items():
 			tf = job_data[i].count(word)
-			idf = math.log(len(word_dict)/int(df))
+			idf = math.log10(len(job_data)/int(df))
 			tf_idf = tf*idf
+			print ("tf: "+str(tf))
+			print ("df: "+str(df))
+			print ("idf: "+str(idf))
 			if tf != 0:
 				word_tf_idf.update( {word:tf_idf} )
 
 		normalize = 0
-		for word, df in word_tf_idf.items():
-			normalize += df*df
+		for word, tf_idf in word_tf_idf.items():
+			normalize += tf_idf*tf_idf
 		normalize = math.sqrt(normalize)
 
-		for word, df in word_tf_idf.items():
+		for word, tf_idf in word_tf_idf.items():
 			word_tf_idf[word] = word_tf_idf[word]/normalize
+			print (word_tf_idf[word])
 
 		tf_idf_list.append(word_tf_idf)
+		break
 	
 	fread = open("../tf_idf.p", "wb")
 	pickle.dump(tf_idf_list, fread)
 	fread.close()
 		
-
+N = 0
 temp = parse_data()
 calculate_tf_idf(temp)
 
