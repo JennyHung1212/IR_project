@@ -121,10 +121,10 @@ def print_out_df(sorted_term_frequency):
     fwrite.write(result_content)
 
     #pkl file
-    fileObject = open("../dictionary",'wb')
+    fileObject = open("../dictionary.p",'wb')
     pickle.dump(sorted_term_frequency,fileObject)
     fileObject.close()
 
 
-data_dict = parse_data()
-construct_dictionary(data_dict)
+# data_dict = parse_data()
+# construct_dictionary(data_dict)
