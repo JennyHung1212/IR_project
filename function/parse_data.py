@@ -76,6 +76,7 @@ def collect_text(data_dict, post, column_title):
     content = data_dict[post][column_title]
     content.replace("\n\n", " ")
     content.replace("\n", " ")
+    content = content.lower()
 
     # Tokenization
     tokenizer = RegexpTokenizer(r'\w+')
