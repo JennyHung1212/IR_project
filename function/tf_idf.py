@@ -11,7 +11,6 @@ import json
 import parse_data as pd
 
 
-
 #calculate tf_idf vector of each job posting
 #input: list (a list that store information of each job postings that related to the job)
 #output: none
@@ -44,18 +43,14 @@ def calculate_tf_idf(job_data, type_name):
 				word_tf_idf.append( [index_df[0], tf_idf] )
 
 		normalize = 0
-
 		for i in range(0, len(word_tf_idf)):
 			normalize += word_tf_idf[i][1]*word_tf_idf[i][1]
 		normalize = math.sqrt(normalize)
 
-
 		for i in range(0, len(word_tf_idf)):
 			word_tf_idf[i][1] = word_tf_idf[i][1]/normalize
-
 		tf_idf_list.append(word_tf_idf)
-		
-	
+
 	print (tf_idf_list)
 
 	if type_name == "generate":
@@ -65,8 +60,6 @@ def calculate_tf_idf(job_data, type_name):
 		fread.close()
 	else:
 		return (tf_idf_list)
-		
-# job_data = pd.parse_data()
-# calculate_tf_idf(job_data, "generate")
 
-
+job_data = pd.parse_data()
+calculate_tf_idf(job_data, "generate")
