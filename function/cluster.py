@@ -31,7 +31,7 @@ def do_HAC():
     # for n in range(0,doc_num):
     #     print(n)
     #     for i in range(n+1,doc_num):
-    #         C[n][i] = cs.cosine(tf_idf[n],tf_idf[i],"CLUSTER")
+    #         C[n][i] = cs.cosine(tf_idf[n],tf_idf[i])
     #     I[n] = 1
     #
     # #pkl file
@@ -106,4 +106,4 @@ def convert_json(cluster_num,cluster_dis,doc_num):
     pickle.dump(cluster_data,fileObject)
     fileObject.close()
 
-do_HAC()
+# do_HAC()

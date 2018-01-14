@@ -28,13 +28,19 @@ def calculate_tf_idf(job_data, type_name):
 		word_dict.update( { word:[index, df] } )
 
 	tf_idf_list = []
-	for i in range(0, len(job_data)):
+	if type_name == "generate":
+		doc_num = len(job_data)
+	else:
+		fileObject = open("../tf_idf.p",'rb')
+		temp_tf_idf = pickle.load(fileObject)
+		doc_num = len(temp_tf_idf)
 
+	for i in range(0, len(job_data)):
 		print ("iteration " + str(i))
 		word_tf_idf = []
 		for word, index_df in word_dict.items():
 			tf = job_data[i]["all"].count(word)
-			idf = math.log10(len(job_data)/int(index_df[1]))
+			idf = math.log10(doc_num/int(index_df[1]))
 			tf_idf = tf*idf
 			# print ("tf: "+str(tf))
 			# print ("df: "+str(df))

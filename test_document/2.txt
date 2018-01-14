@@ -1,0 +1,8 @@
+Let's talk about my programming language journey~~~~~
+The first programming language I ever learnt is C++, which I'm sucked at. I almost failed this subject on my freshman year QQ
+And then there was the maybe-I'm-not-a-programmer doubt roaming in my head. And then I learnt MySQL, SQLite and a little python in the database design class. We wrote a web application which implemented database system. And that was the first time I wrote HTML and css. Actually I should have learnt those programming language in my first semester, but I skipped the class, and here comes the consequences QQ
+And then there's a weird class called Music Design and blablabla whatsoever. Me and my friend wrote a stupid little game using C# and Unity. Where's the music design part? We still don't know. But we learnt a new object-oriented language which I never used after that class. yeah~~~~~~
+In the second semester of my junior year, I wrote a genetic algorithm to solve the facility location problem in Java. I never wrote in Java but the professor wanted us to implement the algorithm with Java WTF!? So I first use C++ and then translate it into Java, what a stupid move.
+And then we use python, css, HTML, AMPL, Javascript, ajax in the next semester to build a scheduling system.
+I can't say that I'm good at problem solving, but we indeed solved a big problem together. And I learn to be responsible from the one that aren't so responsible. Oh by the way, I can speak English and Chinese and I'm think about being a data analyst and system architecture in the future(just kidding). 
+I forgot to mentioned that I once learnt how to wrote an android app for applying a job, however, I'm responsible for API testing after I get the job. 
