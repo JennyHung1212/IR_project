@@ -30,7 +30,8 @@ def do_HAC():
     for n in range(0,doc_num):
         print(n)
         for i in range(n+1,doc_num):
-            C[n][i] = cs.cosine(n,i)
+            C[n][i] = cs.cosine(n,i,"CLUSTER")
+            print(C[n][i])
         I[n] = 1
 
     #pkl file
