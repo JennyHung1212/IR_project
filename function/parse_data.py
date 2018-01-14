@@ -127,5 +127,5 @@ def print_out_df(sorted_term_frequency):
     fileObject.close()
 
 
-data_dict = parse_data()
-construct_dictionary(data_dict)
+# data_dict = parse_data()
+# construct_dictionary(data_dict)
