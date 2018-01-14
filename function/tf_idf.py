@@ -61,5 +61,5 @@ def calculate_tf_idf(job_data, type_name):
 	else:
 		return (tf_idf_list)
 
-job_data = pd.parse_data()
-calculate_tf_idf(job_data, "generate")
+# job_data = pd.parse_data()
+# calculate_tf_idf(job_data, "generate")

@@ -13,27 +13,27 @@ import cosine_similarity as cs
 
 def do_HAC():
 
-    # new_fileObject = open("../tf_idf.p",'rb')
-    # tf_idf = pickle.load(new_fileObject)
-    # # with open('../tf_idf.txt') as json_file:
-    # #     tf_idf = json.load(json_file)
+    new_fileObject = open("../tf_idf.p",'rb')
+    tf_idf = pickle.load(new_fileObject)
+    # with open('../tf_idf.txt') as json_file:
+    #     tf_idf = json.load(json_file)
 
-    # doc_num = len(tf_idf)
-    # print ("doc_num: " +str(doc_num))
-    # C = [[0 for x in range(doc_num)] for y in range(doc_num)]
-    # I = [1 for x in range(doc_num)]
-    # A = []
-    # cluster_dis = [[y] for y in range(1,doc_num+1)]
-    # cluster_num = doc_num
+    doc_num = len(tf_idf)
+    print ("doc_num: " +str(doc_num))
+    C = [[0 for x in range(doc_num)] for y in range(doc_num)]
+    I = [1 for x in range(doc_num)]
+    A = []
+    cluster_dis = [[y] for y in range(1,doc_num+1)]
+    cluster_num = doc_num
 
-    # # Initialize
-    # print("Initialize")
+    # Initialize
+    print("Initialize")
     # for n in range(0,doc_num):
     #     print(n)
     #     for i in range(n+1,doc_num):
     #         C[n][i] = cs.cosine(tf_idf[n],tf_idf[i],"CLUSTER")
     #     I[n] = 1
-
+    #
     # #pkl file
     # fileObject = open("../cs_table.p",'wb')
     # pickle.dump(C,fileObject)
@@ -62,7 +62,7 @@ def do_HAC():
 
         if cluster_num == 8 or cluster_num == 13 or cluster_num == 20:
             print_txt_file(cluster_num,cluster_dis)
-            # convert_json(cluster_num,cluster_dis,doc_num)
+            convert_json(cluster_num,cluster_dis,doc_num)
 
 
 def find_argmax(C, doc_num, I):
@@ -92,16 +92,18 @@ def print_txt_file(cluster_num,cluster_dis):
             fwrite.write("\n")
 
 def convert_json(cluster_num,cluster_dis,doc_num):
-    cluster_json = [0 for x in range(doc_num)]
+    cluster_data = [0 for x in range(doc_num)]
     cluster_count = 0
     for cluster_array in cluster_dis:
         if cluster_array != 0:
             for doc in cluster_array:
-                cluster_json[doc] = cluster_count
+                cluster_data[doc-1] = cluster_count
             cluster_count += 1
 
-    temp_file_name = "clusters_"+str(cluster_num)+".txt"
-    with open("../"+temp_file_name, 'w') as outfile:
-        json.dump(cluster_json, outfile)
+    #pkl file
+    temp_file_name = "clusters_"+str(cluster_num)+".p"
+    fileObject = open("../"+temp_file_name,'wb')
+    pickle.dump(cluster_data,fileObject)
+    fileObject.close()
 
 do_HAC()
