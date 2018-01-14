@@ -13,34 +13,34 @@ import cosine_similarity as cs
 
 def do_HAC():
 
-    new_fileObject = open("../tf_idf.p",'rb')
-    tf_idf = pickle.load(new_fileObject)
-    # with open('../tf_idf.txt') as json_file:
-    #     tf_idf = json.load(json_file)
+    # new_fileObject = open("../tf_idf.p",'rb')
+    # tf_idf = pickle.load(new_fileObject)
+    # # with open('../tf_idf.txt') as json_file:
+    # #     tf_idf = json.load(json_file)
 
-    doc_num = len(tf_idf)
-    C = [[0 for x in range(doc_num)] for y in range(doc_num)]
-    I = [1 for x in range(doc_num)]
-    A = []
-    cluster_dis = [[y] for y in range(1,doc_num+1)]
-    cluster_num = doc_num
+    # doc_num = len(tf_idf)
+    # print ("doc_num: " +str(doc_num))
+    # C = [[0 for x in range(doc_num)] for y in range(doc_num)]
+    # I = [1 for x in range(doc_num)]
+    # A = []
+    # cluster_dis = [[y] for y in range(1,doc_num+1)]
+    # cluster_num = doc_num
 
-    # Initialize
-    print("Initialize")
-    for n in range(0,doc_num):
-        print(n)
-        for i in range(n+1,doc_num):
-            C[n][i] = cs.cosine(n,i,"CLUSTER")
-            print(C[n][i])
-        I[n] = 1
+    # # Initialize
+    # print("Initialize")
+    # for n in range(0,doc_num):
+    #     print(n)
+    #     for i in range(n+1,doc_num):
+    #         C[n][i] = cs.cosine(tf_idf[n],tf_idf[i],"CLUSTER")
+    #     I[n] = 1
 
-    #pkl file
-    fileObject = open("../cs_table.p",'wb')
-    pickle.dump(C,fileObject)
-    fileObject.close()
+    # #pkl file
+    # fileObject = open("../cs_table.p",'wb')
+    # pickle.dump(C,fileObject)
+    # fileObject.close()
 
-    # new_fileObject = open("./C.p",'rb')
-    # C = pickle.load(new_fileObject)
+    new_fileObject = open("../cs_table.p",'rb')
+    C = pickle.load(new_fileObject)
 
     print("Calculate")
     for k in range(0,doc_num-1):
@@ -62,7 +62,7 @@ def do_HAC():
 
         if cluster_num == 8 or cluster_num == 13 or cluster_num == 20:
             print_txt_file(cluster_num,cluster_dis)
-            convert_json(cluster_num,cluster_dis)
+            convert_json(cluster_num,cluster_dis,doc_num)
 
 def find_argmax(C, doc_num, I):
     max_value = 0
@@ -90,8 +90,8 @@ def print_txt_file(cluster_num,cluster_dis):
                 fwrite.write(str(value)+"\n")
             fwrite.write("\n")
 
-def convert_json(cluster_num,cluster_dis):
-    cluster_json = []
+def convert_json(cluster_num,cluster_dis,doc_num):
+    cluster_json = [0 for x in range(doc_num)]
     cluster_count = 0
     for cluster_array in cluster_dis:
         if cluster_array != 0:

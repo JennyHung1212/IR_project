@@ -78,15 +78,15 @@ def calculate_tf_idf(job_data, type_name):
 	print (tf_idf_list)
 
 	if type_name == "generate":
-		filename = "../tf_idf.json"
-		fread = open(filename, "w")
-		json.dump(tf_idf_list, fread)
+		filename = "../tf_idf.p"
+		fread = open(filename, "wb")
+		pickle.dump(tf_idf_list, fread)
 		fread.close()
 	else:
 		return (tf_idf_list)
 		
-job_data = pd.parse_data()
-calculate_tf_idf(job_data, "generate")
+# job_data = pd.parse_data()
+# calculate_tf_idf(job_data, "generate")
 
 
 

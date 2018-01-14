@@ -14,18 +14,17 @@ import json
 def cosine(doc_x, doc_y, func_type):
 
     # read input
-    fileObject = open("../tf_idf.p",'rb')
-    data = pickle.load(fileObject)
+    # fileObject = open("../tf_idf.p",'rb')
+    # data = pickle.load(fileObject)
     # with open('../tf_idf.txt') as json_file:
     #     tf_idf = json.load(json_file)
 
     if(func_type == "CLUSTER"):
-        doc_ti_vector_x = data[int(doc_x)]
-        doc_ti_vector_y = data[int(doc_y)]
-        # doc_ti_vector_x = data[0]
-        # doc_ti_vector_y = data[0]
-        #doc_ti_vector_x = doc_ti_vector_x_data.items()
-        #doc_ti_vector_y = doc_ti_vector_y_data.items()
+        # doc_ti_vector_x = data[int(doc_x)]
+        # doc_ti_vector_y = data[int(doc_y)]
+        doc_ti_vector_x = doc_x
+        doc_ti_vector_y = doc_y
+        
     elif(func_type == "INPUT"):
         doc_ti_vector_x = doc_x
         doc_ti_vector_y = doc_y
