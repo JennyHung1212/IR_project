@@ -28,7 +28,7 @@ def parse_data():
 				job_info += row[8]
 			if row[9] != "NA":
 				job_info += row[9]
-			job_data.append(job_info)  
+			job_data.append(job_info)
 
 
 	fread.close()
@@ -58,9 +58,9 @@ def calculate_tf_idf(job_data):
 			tf = job_data[i].count(word)
 			idf = math.log10(len(job_data)/int(df))
 			tf_idf = tf*idf
-			print ("tf: "+str(tf))
-			print ("df: "+str(df))
-			print ("idf: "+str(idf))
+			# print ("tf: "+str(tf))
+			# print ("df: "+str(df))
+			# print ("idf: "+str(idf))
 			if tf != 0:
 				word_tf_idf.update( {word:tf_idf} )
 
@@ -71,18 +71,15 @@ def calculate_tf_idf(job_data):
 
 		for word, tf_idf in word_tf_idf.items():
 			word_tf_idf[word] = word_tf_idf[word]/normalize
-			print (word_tf_idf[word])
+			# print (word_tf_idf[word])
 
 		tf_idf_list.append(word_tf_idf)
 		break
-	
+
 	fread = open("../tf_idf.p", "wb")
 	pickle.dump(tf_idf_list, fread)
 	fread.close()
-		
-N = 0
-temp = parse_data()
-calculate_tf_idf(temp)
 
-
-
+# N = 0
+# temp = parse_data()
+# calculate_tf_idf(temp)
