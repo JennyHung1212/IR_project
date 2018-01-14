@@ -42,14 +42,14 @@ def calculate_tf_idf(job_data, type_name):
 	fread = open("../dictionary.txt", "r")
 	str_text = fread.read()
 	fread.close()
-	temp_list = str_text.split("\n")[1:-1]
+	temp_list = str_text.split("\n")[1:]
 
 	word_dict = {}
 	for i in range(0, len(temp_list)):
 		index = temp_list[i].split("\t")[0]
 		word = temp_list[i].split("\t")[1]
 		df = temp_list[i].split("\t")[2]
-			word_dict.update( { word:[index, df] } )
+		word_dict.update( { word:[index, df] } )
 
 	tf_idf_list = []
 	for i in range(0, len(job_data)):
