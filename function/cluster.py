@@ -13,10 +13,10 @@ import cosine_similarity as cs
 
 def do_HAC():
 
-    # new_fileObject = open("../tf_idf.p",'rb')
-    # tf_idf = pickle.load(new_fileObject)
-    with open('../tf_idf.txt') as json_file:
-        tf_idf = json.load(json_file)
+    new_fileObject = open("../tf_idf.p",'rb')
+    tf_idf = pickle.load(new_fileObject)
+    # with open('../tf_idf.txt') as json_file:
+    #     tf_idf = json.load(json_file)
 
     doc_num = len(tf_idf)
     C = [[0 for x in range(doc_num)] for y in range(doc_num)]
@@ -28,12 +28,13 @@ def do_HAC():
     # Initialize
     print("Initialize")
     for n in range(0,doc_num):
+        print(n)
         for i in range(n+1,doc_num):
             C[n][i] = cs.cosine(n,i)
         I[n] = 1
 
     #pkl file
-    fileObject = open("./cs_table.p",'wb')
+    fileObject = open("../cs_table.p",'wb')
     pickle.dump(C,fileObject)
     fileObject.close()
 
@@ -42,6 +43,7 @@ def do_HAC():
 
     print("Calculate")
     for k in range(0,doc_num-1):
+        print(k)
         merge_index = [0,0]
         merge_index = find_argmax(C, doc_num, I)
         A.append(merge_index)
@@ -99,3 +101,5 @@ def convert_json(cluster_num,cluster_dis):
     temp_file_name = "clusters_"+str(cluster_num)+".txt"
     with open("../"+temp_file_name, 'w') as outfile:
         json.dump(cluster_json, outfile)
+
+do_HAC()
