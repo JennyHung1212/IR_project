@@ -88,7 +88,7 @@ def collect_text(data_dict, post, column_title):
 
     # Stop words
     stoplist = set(stopwords.words('english'))
-    content = [word for word in content if (word not in stoplist and word.find("_") == -1) and not any(char.isdigit() for char in word)]
+    content = [word for word in content if (word not in stoplist and word.find("_") == -1 and len(word)>3) and not any(char.isdigit() for char in word)]
     return content
 
 # Record the document frequency of each term
