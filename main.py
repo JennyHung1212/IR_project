@@ -10,10 +10,10 @@ import cluster as cluster
 #------- Functions -------#
 def compute_cosine_similarity(input_tf_idf_array):
 
-    # new_fileObject = open("./tf_idf.p",'rb')
-    # tf_idf = pickle.load(new_fileObject)
-    with open('./tf_idf.txt') as json_file:
-        tf_idf = json.load(json_file)
+    new_fileObject = open("./tf_idf.p",'rb')
+    tf_idf = pickle.load(new_fileObject)
+    # with open('./tf_idf.txt') as json_file:
+    #     tf_idf = json.load(json_file)
 
     temp_input_cs = []
     for i in range(0,len(tf_idf)):
