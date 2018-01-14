@@ -35,6 +35,7 @@ import parse_data as pd
 # 	return job_data
 
 
+
 #calculate tf_idf vector of each job posting
 #input: list (a list that store information of each job postings that related to the job)
 #output: none
@@ -67,6 +68,7 @@ def calculate_tf_idf(job_data, type_name):
 			normalize += word_tf_idf[i][1]*word_tf_idf[i][1]
 		normalize = math.sqrt(normalize)
 
+
 		for i in range(0, len(word_tf_idf)):
 			word_tf_idf[i][1] = word_tf_idf[i][1]/normalize
 
@@ -88,3 +90,6 @@ calculate_tf_idf(job_data, "generate")
 
 
 
+# N = 0
+# temp = parse_data()
+# calculate_tf_idf(temp)

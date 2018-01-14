@@ -26,6 +26,7 @@ def parse_data():
     data_key = []
     data_dict = {}
     all_data_dict = {}
+    row_index = 0
     for row in csvCursor:
         # if row_count == -1:
             # for i in range(0,5):
@@ -41,18 +42,20 @@ def parse_data():
             # # required quality
             # data_key[4] = row[4]
         # else:
-        if row_count != -1:
-            all_data_dict[row_count] = {}
-            all_data_dict[row_count]["all"] = row[1]
+        if row_count >= 15242:
+            all_data_dict[row_index] = {}
+            all_data_dict[row_index]["all"] = row[1]
             if row[2] != "NA":
-                all_data_dict[row_count]["all"] += " " + row[2]
+                all_data_dict[row_index]["all"] += " " + row[2]
             if row[3] != "NA":
-                all_data_dict[row_count]["all"] += " " + row[3]
+                all_data_dict[row_index]["all"] += " " + row[3]
             if row[4] != "NA":
-                all_data_dict[row_count]["all"] += " " + row[4]
+                all_data_dict[row_index]["all"] += " " + row[4]
+            row_index += 1
             # for j in range(0,5):
             #     data_dict[row_count][data_key[j]] = row[j]
         row_count += 1
+
     fread.close()
     return all_data_dict
 
