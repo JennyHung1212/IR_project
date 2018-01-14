@@ -16,6 +16,7 @@ def cosine(doc_x, doc_y, func_type):
     # read input
     # fileObject = open("../tf_idf.p",'rb')
     # data = pickle.load(fileObject)
+
     # with open('../tf_idf.txt') as json_file:
     #     tf_idf = json.load(json_file)
 

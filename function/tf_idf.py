@@ -10,30 +10,6 @@ import pickle
 import json
 import parse_data as pd
 
-#parse csv to list
-#input: none
-#output: list (a list that store information of each job postings that related to the job)
-# def parse_data():
-# 	job_data = []
-# 	fread = open("../dataset/data_job_posts_xs.csv" ,"r")
-# 	csvCursor = csv.reader(fread)
-
-# 	for row in csvCursor:
-# 		if row[0] != "date":
-# 			job_info = ""
-# 			#Title+JobDescription+JobRequirement+RequireQual
-# 			if row[1] != "NA":
-# 				job_info += row[1]
-# 			if row[7] != "NA":
-# 				job_info += row[7]
-# 			if row[8] != "NA":
-# 				job_info += row[8]
-# 			if row[9] != "NA":
-# 				job_info += row[9]
-# 			job_data.append(job_info)  
-# 	fread.close()
-# 	return job_data
-
 
 
 #calculate tf_idf vector of each job posting
@@ -54,16 +30,21 @@ def calculate_tf_idf(job_data, type_name):
 
 	tf_idf_list = []
 	for i in range(0, len(job_data)):
+
 		print ("iteration " + str(i))
 		word_tf_idf = []
 		for word, index_df in word_dict.items():
 			tf = job_data[i]["all"].count(word)
 			idf = math.log10(len(job_data)/int(index_df[1]))
 			tf_idf = tf*idf
+			# print ("tf: "+str(tf))
+			# print ("df: "+str(df))
+			# print ("idf: "+str(idf))
 			if tf != 0:
 				word_tf_idf.append( [index_df[0], tf_idf] )
 
 		normalize = 0
+
 		for i in range(0, len(word_tf_idf)):
 			normalize += word_tf_idf[i][1]*word_tf_idf[i][1]
 		normalize = math.sqrt(normalize)
@@ -89,7 +70,3 @@ def calculate_tf_idf(job_data, type_name):
 # calculate_tf_idf(job_data, "generate")
 
 
-
-# N = 0
-# temp = parse_data()
-# calculate_tf_idf(temp)

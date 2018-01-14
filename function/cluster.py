@@ -62,7 +62,8 @@ def do_HAC():
 
         if cluster_num == 8 or cluster_num == 13 or cluster_num == 20:
             print_txt_file(cluster_num,cluster_dis)
-            convert_json(cluster_num,cluster_dis,doc_num)
+            # convert_json(cluster_num,cluster_dis,doc_num)
+
 
 def find_argmax(C, doc_num, I):
     max_value = 0
