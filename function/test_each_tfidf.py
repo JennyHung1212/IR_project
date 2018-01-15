@@ -44,13 +44,13 @@ for cluster in temp_clusters:
             max_tf_idf = temp_input_tf_idf_arr.argsort()[-1:][::-1]
             max_index = [word_index_array[max_tf_idf[0]]]
             max_word = [word_dict[max_index[0]]]
-            print("doc: ",i)
+            print("doc: ",i+1)
             print("tf_idf: ",[tf_idf_array[max_tf_idf[0]]])
             print("word: ",max_word)
         else:
             max_tf_idf = temp_input_tf_idf_arr.argsort()[-3:][::-1]
             max_index = [word_index_array[max_tf_idf[0]],word_index_array[max_tf_idf[1]],word_index_array[max_tf_idf[2]]]
             max_word = [word_dict[max_index[0]],word_dict[max_index[1]],word_dict[max_index[2]]]
-            print("doc: ",i)
+            print("doc: ",i+1)
             print("tf_idf: ",[tf_idf_array[max_tf_idf[0]],tf_idf_array[max_tf_idf[1]],tf_idf_array[max_tf_idf[2]]])
             print("word: ",max_word)
