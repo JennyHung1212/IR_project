@@ -19,6 +19,7 @@ def calculate_tf_idf(job_data, type_name):
 	str_text = fread.read()
 	fread.close()
 	temp_list = str_text.split("\n")[1:]
+	print (job_data[0]['all'])
 
 	word_dict = {}
 	for i in range(0, len(temp_list)):
@@ -56,6 +57,7 @@ def calculate_tf_idf(job_data, type_name):
 		for i in range(0, len(word_tf_idf)):
 			word_tf_idf[i][1] = word_tf_idf[i][1]/normalize
 		tf_idf_list.append(word_tf_idf)
+		
 
 	print (tf_idf_list)
 

@@ -42,6 +42,7 @@ file_name = sys.argv[1]
 fread = open("../test_document/"+file_name, "r")
 input_document = fread.read()
 input_document.replace("\n", " ")
+input_document.replace("\n\n", " ")
 fread.close()
 
 input_data_dict = {}
