@@ -1,0 +1,5 @@
+I'm a senior student major in Information Management of National Taiwan University. 
+I want to be a quality assurance test engineer.
+Being a API testing intern, I learn how to design, develop and implement comprehensive QA test plans and test cases, and have the ability to use several testing tools or software to implement complex test automation both at the functional and system level. 
+I also know how to run regression tests and have the experience of performing both white and black box testing. My main task during internship is to work with other members of the global engineering team to improve the company's working processes, problem-solving methods, effectiveness and efficiency.
+The project I'm currently working on is a web application utilizing latest technologies in video streaming over internet for telephones systems, televisions, and web browsers. 
